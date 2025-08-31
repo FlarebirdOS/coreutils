@@ -1,6 +1,6 @@
 pkgname=coreutils
 pkgver=9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The basic file, shell and text manipulation utilities of the GNU operating system"
 arch=('x86_64')
 url="https://www.gnu.org/software/coreutils/"
@@ -21,7 +21,6 @@ makedepends=(
     'gperf'
     'python'
 )
-options=('!lto')
 source=(https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz
     https://www.linuxfromscratch.org/patches/downloads/${pkgname}/${pkgname}-${pkgver}-upstream_fix-1.patch
     https://www.linuxfromscratch.org/patches/downloads/${pkgname}/${pkgname}-${pkgver}-i18n-1.patch)
@@ -44,6 +43,7 @@ build() {
 
     local configure_args=(
         --enable-no-install-program=kill,uptime
+        --with-openssl
         ${configure_options}
     )
 
