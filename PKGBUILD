@@ -1,6 +1,6 @@
 pkgname=coreutils
-pkgver=9.7
-pkgrel=2
+pkgver=9.8
+pkgrel=3
 pkgdesc="The basic file, shell and text manipulation utilities of the GNU operating system"
 arch=('x86_64')
 url="https://www.gnu.org/software/coreutils/"
@@ -22,17 +22,14 @@ makedepends=(
     'python'
 )
 source=(https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz
-    https://www.linuxfromscratch.org/patches/downloads/${pkgname}/${pkgname}-${pkgver}-upstream_fix-1.patch
-    https://www.linuxfromscratch.org/patches/downloads/${pkgname}/${pkgname}-${pkgver}-i18n-1.patch)
-sha256sums=(e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf
-    7fc7d0925452808b6eeb13a059b495fd7b7290bc7adc9fec213126f4862da649
-    4af1cddb73b98350f64ba56cc6db3cb27ab3b3ca92af0089aad0965182f56ce0)
+    https://www.linuxfromscratch.org/patches/downloads/${pkgname}/${pkgname}-${pkgver}-i18n-2.patch)
+sha256sums=(e6d4fd2d852c9141a1c2a18a13d146a0cd7e45195f72293a4e4c044ec6ccca15
+    07f2e1d6d4085feed1788b6d7a1bf4ef47af4b6f8f6702cf6868f01fc718c099)
 
 prepare() {
     cd ${pkgname}-${pkgver}
 
-    patch -Np1 -i ${srcdir}/${pkgname}-${pkgver}-upstream_fix-1.patch
-    patch -Np1 -i ${srcdir}/${pkgname}-${pkgver}-i18n-1.patch
+    patch -Np1 -i ${srcdir}/${pkgname}-${pkgver}-i18n-2.patch
 
     autoreconf -fv
     automake -af
