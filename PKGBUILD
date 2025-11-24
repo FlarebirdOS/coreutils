@@ -1,6 +1,6 @@
 pkgname=coreutils
-pkgver=9.8
-pkgrel=3
+pkgver=9.9
+pkgrel=4
 pkgdesc="The basic file, shell and text manipulation utilities of the GNU operating system"
 arch=('x86_64')
 url="https://www.gnu.org/software/coreutils/"
@@ -22,14 +22,14 @@ makedepends=(
     'python'
 )
 source=(https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz
-    https://www.linuxfromscratch.org/patches/downloads/${pkgname}/${pkgname}-${pkgver}-i18n-2.patch)
-sha256sums=(e6d4fd2d852c9141a1c2a18a13d146a0cd7e45195f72293a4e4c044ec6ccca15
-    07f2e1d6d4085feed1788b6d7a1bf4ef47af4b6f8f6702cf6868f01fc718c099)
+    https://www.linuxfromscratch.org/patches/downloads/${pkgname}/${pkgname}-${pkgver}-i18n-1.patch)
+sha256sums=(19bcb6ca867183c57d77155eae946c5eced88183143b45ca51ad7d26c628ca75
+    1c0a923feb2d84c58562f192333916c2914214ce9d96c54571cdd90aceb2ad3c)
 
 prepare() {
     cd ${pkgname}-${pkgver}
 
-    patch -Np1 -i ${srcdir}/${pkgname}-${pkgver}-i18n-2.patch
+    patch -Np1 -i ${srcdir}/${pkgname}-${pkgver}-i18n-1.patch
 
     autoreconf -fv
     automake -af
